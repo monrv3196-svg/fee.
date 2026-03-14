@@ -94,7 +94,44 @@
     .empty { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.78rem; color: #4a3e34; line-height: 1.7; }
     .stat-big { font-family: Georgia, serif; font-size: 3rem; font-style: italic; color: #c8824a; line-height: 1; }
     .stat-lbl { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: #6a5e54; margin-top: 0.4rem; }
-    @media (max-width: 640px) { nav { padding: 1.2rem 1.5rem; } .navlinks { gap: 1.2rem; } .hero { padding: 3rem 1.5rem 2.5rem; } .section { padding: 3rem 1.5rem; } .fan-band { padding: 3rem 1.5rem; } .sets-grid { grid-template-columns: 1fr; } .bform { grid-template-columns: 1fr; } footer { padding: 1.5rem; } .dash { padding: 1.5rem; } }
+    .dash-tabs { display: flex; gap: 0; margin-bottom: 2rem; border-bottom: 0.5px solid rgba(200,130,74,0.15); }
+    .dash-tab { background: none; border: none; border-bottom: 2px solid transparent; padding: 0.7rem 1.4rem; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: #6a5e54; cursor: pointer; transition: all 0.2s; margin-bottom: -0.5px; }
+    .dash-tab:hover { color: #f0ece4; }
+    .dash-tab.active { color: #c8824a; border-bottom-color: #c8824a; }
+    .dash-panel { display: none; }
+    .dash-panel.active { display: block; }
+    .cm-field { margin-bottom: 16px; }
+    .cm-label { display: block; font-size: 0.72rem; color: #9a8878; margin-bottom: 6px; letter-spacing: 0.04em; }
+    .cm-eyebrow { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: #c8824a; margin-bottom: 8px; display: block; }
+    .cm-input, .cm-textarea { width: 100%; background: rgba(255,255,255,0.03); border: 0.5px solid rgba(240,236,228,0.1); color: #f0ece4; padding: 0.7rem 0.9rem; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.82rem; outline: none; transition: border-color 0.2s; }
+    .cm-input:focus, .cm-textarea:focus { border-color: #c8824a; }
+    .cm-input::placeholder, .cm-textarea::placeholder { color: #3a2e26; }
+    .cm-textarea { min-height: 80px; resize: vertical; }
+    .cm-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .cm-tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+    .cm-tag { font-size: 0.62rem; padding: 5px 10px; border: 0.5px solid rgba(240,236,228,0.12); color: #9a8878; cursor: pointer; user-select: none; transition: all 0.15s; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cm-tag.active { background: #c8824a; color: #0e0c0b; border-color: #c8824a; }
+    .cm-btn { width: 100%; padding: 0.8rem; font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; margin-top: 8px; background: #c8824a; color: #0e0c0b; border: none; cursor: pointer; font-weight: 500; transition: background 0.2s; font-family: 'Helvetica Neue', Arial, sans-serif; }
+    .cm-btn:hover { background: #f0ece4; }
+    .cm-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    .cm-divider { height: 0.5px; background: linear-gradient(to right, transparent, rgba(200,130,74,0.25), transparent); margin: 1.5rem 0; }
+    .cm-output { display: none; }
+    .cm-output.show { display: block; }
+    .cm-out-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+    .cm-out-tab { font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 12px; border: 0.5px solid rgba(240,236,228,0.1); cursor: pointer; background: none; color: #6a5e54; transition: all 0.15s; font-family: 'Helvetica Neue', Arial, sans-serif; }
+    .cm-out-tab.active { border-color: rgba(200,130,74,0.4); color: #c8824a; }
+    .cm-out-panel { display: none; }
+    .cm-out-panel.active { display: block; }
+    .cm-card { background: #0e0c0b; border: 0.5px solid rgba(200,130,74,0.1); padding: 1rem 1.2rem; margin-bottom: 10px; position: relative; }
+    .cm-card-lbl { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: #c8824a; margin-bottom: 8px; }
+    .cm-card-text { font-size: 0.8rem; color: #f0ece4; line-height: 1.8; white-space: pre-wrap; font-family: 'Courier New', Courier, monospace; }
+    .cm-copy { position: absolute; top: 10px; right: 10px; font-size: 0.58rem; padding: 3px 8px; border: 0.5px solid rgba(240,236,228,0.1); cursor: pointer; background: #151210; color: #6a5e54; transition: all 0.15s; font-family: 'Helvetica Neue', Arial, sans-serif; letter-spacing: 0.1em; text-transform: uppercase; }
+    .cm-copy:hover { color: #c8824a; border-color: rgba(200,130,74,0.3); }
+    .cm-loading { text-align: center; padding: 2rem; color: #6a5e54; font-size: 0.75rem; display: none; letter-spacing: 0.08em; }
+    .cm-loading.show { display: block; }
+    .cm-error { background: rgba(200,80,80,0.06); color: #c87272; border: 0.5px solid rgba(200,80,80,0.18); padding: 9px 12px; font-size: 0.75rem; margin-top: 8px; display: none; }
+    .cm-error.show { display: block; }
+    @media (max-width: 640px) { nav { padding: 1.2rem 1.5rem; } .navlinks { gap: 1.2rem; } .hero { padding: 3rem 1.5rem 2.5rem; } .section { padding: 3rem 1.5rem; } .fan-band { padding: 3rem 1.5rem; } .sets-grid { grid-template-columns: 1fr; } .bform { grid-template-columns: 1fr; } footer { padding: 1.5rem; } .dash { padding: 1.5rem; } .cm-grid2 { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -222,22 +259,107 @@
     <h1><em>FEE<span class="dot">.</span></em> Dashboard &mdash; Admin</h1>
     <button class="btn-outline" onclick="exitDash()">Exit</button>
   </div>
-  <div class="dash-grid">
-    <div class="dcard"><h3>Fan Signups</h3><div id="fan-list"><p class="empty">No signups yet this session.</p></div></div>
-    <div class="dcard"><h3>Booking Inquiries</h3><div id="booking-list"><p class="empty">No inquiries yet this session.</p></div></div>
-    <div class="dcard">
-      <h3>Session Stats</h3>
-      <div class="stat-big" id="s-fans">0</div>
-      <div class="stat-lbl">Fan signups</div>
-      <br>
-      <div class="stat-big" id="s-bookings">0</div>
-      <div class="stat-lbl">Booking inquiries</div>
+  <div class="dash-tabs">
+    <button class="dash-tab active" onclick="switchTab('overview', this)">Overview</button>
+    <button class="dash-tab" onclick="switchTab('multiplier', this)">Content Multiplier</button>
+  </div>
+
+  <div id="tab-overview" class="dash-panel active">
+    <div class="dash-grid">
+      <div class="dcard"><h3>Fan Signups</h3><div id="fan-list"><p class="empty">No signups yet this session.</p></div></div>
+      <div class="dcard"><h3>Booking Inquiries</h3><div id="booking-list"><p class="empty">No inquiries yet this session.</p></div></div>
+      <div class="dcard">
+        <h3>Session Stats</h3>
+        <div class="stat-big" id="s-fans">0</div>
+        <div class="stat-lbl">Fan signups</div>
+        <br>
+        <div class="stat-big" id="s-bookings">0</div>
+        <div class="stat-lbl">Booking inquiries</div>
+      </div>
+      <div class="dcard">
+        <h3>Channels</h3>
+        <div class="dentry"><strong>YouTube</strong><span>@fee_dsp</span></div>
+        <div class="dentry"><strong>Instagram</strong><span>@fee.dsp</span></div>
+        <div class="dentry"><strong>Contact</strong><span>futureelectriceclectic@gmail.com</span></div>
+      </div>
     </div>
-    <div class="dcard">
-      <h3>Channels</h3>
-      <div class="dentry"><strong>YouTube</strong><span>@fee_dsp</span></div>
-      <div class="dentry"><strong>Instagram</strong><span>@fee.dsp</span></div>
-      <div class="dentry"><strong>Contact</strong><span>futureelectriceclectic@gmail.com</span></div>
+  </div>
+
+  <div id="tab-multiplier" class="dash-panel">
+    <div class="dcard" style="max-width:720px;">
+      <h3>Content Multiplier</h3>
+      <p class="empty" style="margin-bottom:1.5rem;">Fill in your set details and generate copy for every platform at once.</p>
+
+      <div class="cm-field">
+        <span class="cm-eyebrow">Set details</span>
+        <div class="cm-grid2">
+          <div>
+            <label class="cm-label">Set number</label>
+            <input class="cm-input" type="text" id="cm-num" placeholder="e.g. 002" />
+          </div>
+          <div>
+            <label class="cm-label">Set name / title</label>
+            <input class="cm-input" type="text" id="cm-name" placeholder="e.g. Warm Machinery" />
+          </div>
+        </div>
+      </div>
+
+      <div class="cm-field">
+        <label class="cm-label">Mood / vibe - describe freely</label>
+        <textarea class="cm-textarea" id="cm-mood" placeholder="e.g. Deep, hypnotic, builds slowly. Starts warm and organic, ends harder and metallic. Good for late night."></textarea>
+      </div>
+
+      <div class="cm-field">
+        <div class="cm-grid2">
+          <div>
+            <label class="cm-label">BPM range (optional)</label>
+            <input class="cm-input" type="text" id="cm-bpm" placeholder="e.g. 122-128" />
+          </div>
+          <div>
+            <label class="cm-label">Duration</label>
+            <input class="cm-input" type="text" id="cm-dur" placeholder="e.g. 1hr 20min" />
+          </div>
+        </div>
+      </div>
+
+      <div class="cm-field">
+        <label class="cm-label">Genre tags / sounds in the mix</label>
+        <input class="cm-input" type="text" id="cm-genres" placeholder="e.g. afro house, melodic techno, minimal" />
+      </div>
+
+      <div class="cm-field">
+        <label class="cm-label">Where was it recorded / played?</label>
+        <input class="cm-input" type="text" id="cm-location" placeholder="e.g. rooftop session, studio, live at venue name" />
+      </div>
+
+      <div class="cm-field">
+        <label class="cm-label">Anything else worth mentioning</label>
+        <input class="cm-input" type="text" id="cm-extra" placeholder="e.g. collab set with @someone, visual by artist, recorded at sunrise..." />
+      </div>
+
+      <div class="cm-field">
+        <span class="cm-eyebrow">Generate content for</span>
+        <div class="cm-tag-row">
+          <span class="cm-tag active" data-p="youtube_desc">YouTube description</span>
+          <span class="cm-tag active" data-p="ig_caption_main">IG main caption</span>
+          <span class="cm-tag active" data-p="ig_reel_1">IG Reel 1</span>
+          <span class="cm-tag active" data-p="ig_reel_2">IG Reel 2</span>
+          <span class="cm-tag active" data-p="ig_reel_3">IG Reel 3</span>
+          <span class="cm-tag active" data-p="email">Subscriber email</span>
+          <span class="cm-tag active" data-p="yt_community">YT community post</span>
+        </div>
+      </div>
+
+      <button class="cm-btn" id="cm-gen-btn" onclick="cmGenerate()">Generate content</button>
+      <div class="cm-error" id="cm-error"></div>
+    </div>
+
+    <div class="cm-loading" id="cm-loading">Generating your content pack...</div>
+
+    <div class="cm-output" id="cm-output">
+      <div class="cm-divider"></div>
+      <div class="cm-out-tabs" id="cm-out-tabs"></div>
+      <div id="cm-out-panels"></div>
     </div>
   </div>
 </div>
@@ -245,13 +367,100 @@
 <script>
   const PASS = 'fee_mon_colme1240&$!';
   const data = { fans: [], bookings: [] };
+
   function showLogin() { document.getElementById('mainPage').style.display='none'; document.getElementById('loginScreen').classList.add('show'); setTimeout(()=>document.getElementById('dash-pass').focus(),80); }
   function hideLogin() { document.getElementById('loginScreen').classList.remove('show'); document.getElementById('mainPage').style.display='block'; document.getElementById('dash-pass').value=''; document.getElementById('login-err').style.display='none'; }
   function checkPass() { if(document.getElementById('dash-pass').value===PASS){ document.getElementById('loginScreen').classList.remove('show'); document.getElementById('dashPage').classList.add('show'); renderDash(); }else{ document.getElementById('login-err').style.display='block'; } }
   function exitDash() { document.getElementById('dashPage').classList.remove('show'); document.getElementById('mainPage').style.display='block'; document.getElementById('dash-pass').value=''; }
   function submitFan(e) { e.preventDefault(); data.fans.push({name:document.getElementById('fan-name').value,email:document.getElementById('fan-email').value,ts:new Date().toLocaleTimeString()}); document.getElementById('fan-msg').style.display='block'; document.getElementById('fan-name').value=''; document.getElementById('fan-email').value=''; }
   function submitBooking(e) { e.preventDefault(); data.bookings.push({name:document.getElementById('b-name').value,email:document.getElementById('b-email').value,venue:document.getElementById('b-venue').value,date:document.getElementById('b-date').value,type:document.getElementById('b-type').value,ts:new Date().toLocaleTimeString()}); document.getElementById('booking-msg').style.display='block'; ['b-name','b-email','b-venue','b-date','b-capacity','b-msg'].forEach(id=>document.getElementById(id).value=''); document.getElementById('b-type').selectedIndex=0; }
-  function renderDash() { document.getElementById('fan-list').innerHTML=data.fans.length?data.fans.map(f=>`<div class="dentry"><strong>${f.name}</strong><span>${f.email} &middot; ${f.ts}</span></div>`).join(''):'<p class="empty">No signups yet this session.</p>'; document.getElementById('booking-list').innerHTML=data.bookings.length?data.bookings.map(b=>`<div class="dentry"><strong>${b.name} &mdash; ${b.venue||'Venue TBD'}</strong><span>${b.email} &middot; ${b.date||'Date TBD'} &middot; ${b.type||'&mdash;'}</span></div>`).join(''):'<p class="empty">No inquiries yet this session.</p>'; document.getElementById('s-fans').textContent=data.fans.length; document.getElementById('s-bookings').textContent=data.bookings.length; }
+  function renderDash() { document.getElementById('fan-list').innerHTML=data.fans.length?data.fans.map(f=>`<div class="dentry"><strong>${f.name}</strong><span>${f.email} &middot; ${f.ts}</span></div>`).join(''):'<p class="empty">No signups yet this session.</p>'; document.getElementById('booking-list').innerHTML=data.bookings.length?data.bookings.map(b=>`<div class="dentry"><strong>${b.name} - ${b.venue||'Venue TBD'}</strong><span>${b.email} &middot; ${b.date||'Date TBD'} &middot; ${b.type||'-'}</span></div>`).join(''):'<p class="empty">No inquiries yet this session.</p>'; document.getElementById('s-fans').textContent=data.fans.length; document.getElementById('s-bookings').textContent=data.bookings.length; }
+
+  function switchTab(id, btn) {
+    document.querySelectorAll('.dash-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.dash-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  document.querySelectorAll('.cm-tag').forEach(t => t.addEventListener('click', () => t.classList.toggle('active')));
+
+  const CM_LABELS = { youtube_desc:'YouTube description', ig_caption_main:'IG main caption', ig_reel_1:'IG Reel 1', ig_reel_2:'IG Reel 2', ig_reel_3:'IG Reel 3', email:'Subscriber email', yt_community:'YT community post' };
+
+  function cmGetPlatforms() { return [...document.querySelectorAll('.cm-tag.active')].map(t => t.dataset.p); }
+
+  function cmBuildPrompt() {
+    const num = document.getElementById('cm-num').value.trim();
+    const name = document.getElementById('cm-name').value.trim();
+    const mood = document.getElementById('cm-mood').value.trim();
+    const bpm = document.getElementById('cm-bpm').value.trim();
+    const dur = document.getElementById('cm-dur').value.trim();
+    const genres = document.getElementById('cm-genres').value.trim();
+    const location = document.getElementById('cm-location').value.trim();
+    const extra = document.getElementById('cm-extra').value.trim();
+    const platforms = cmGetPlatforms();
+    const instructions = {
+      youtube_desc: `"youtube_desc": YouTube video description. 3-4 short paragraphs. First: atmospheric mood. Second: practical info (set number, genres, duration, location). Third: CTA to subscribe and follow IG. End with 10-15 SEO hashtags. Tone: editorial, minimal.`,
+      ig_caption_main: `"ig_caption_main": Main IG post caption. 3-6 lines. Short, punchy, poetic. Lowercase preferred. Strong opening line, brief mood, link in bio mention, 5-8 hashtags at end.`,
+      ig_reel_1: `"ig_reel_1": IG Reel caption for clip 1 (early, warm section of set). 2-3 lines max. Hook people in. No hashtags needed.`,
+      ig_reel_2: `"ig_reel_2": IG Reel caption for clip 2 (mid section, energy building). 2-3 lines max. Different angle from clip 1.`,
+      ig_reel_3: `"ig_reel_3": IG Reel caption for clip 3 (peak or closing moment). 2-3 lines max. Leave people wanting more.`,
+      email: `"email": Subscriber email. Subject line first labeled "Subject:". Body: warm, personal, 3-4 short paragraphs. Include [YOUTUBE_LINK] placeholder. Sign off with "FEE."`,
+      yt_community: `"yt_community": YouTube community post. 3-5 sentences. Casual, direct. Announces set, gives context, can include a question for comments.`
+    };
+    const selected = platforms.map(p => instructions[p]).filter(Boolean).join('\n\n');
+    return `You are the content writer for FEE. (Future Electric Eclectic), a music curation project. Brand voice: understated, intentional, poetic without being pretentious. Think NTS Radio meets Boiler Room but intimate.\n\nSet details:\n- Number: ${num||'not specified'}\n- Name: ${name||'not specified'}\n- Mood: ${mood||'not specified'}\n- BPM: ${bpm||'not specified'}\n- Duration: ${dur||'not specified'}\n- Genres: ${genres||'not specified'}\n- Location: ${location||'not specified'}\n- Notes: ${extra||'none'}\n\nGenerate the following. Return ONLY a valid JSON object, no markdown, no code fences:\n\n${selected}\n\nReturn only the JSON object.`;
+  }
+
+  async function cmGenerate() {
+    const platforms = cmGetPlatforms();
+    if (!platforms.length) { cmShowError('Select at least one platform.'); return; }
+    if (!document.getElementById('cm-mood').value.trim()) { cmShowError('Add a mood / vibe description first.'); return; }
+    document.getElementById('cm-error').classList.remove('show');
+    document.getElementById('cm-gen-btn').disabled = true;
+    document.getElementById('cm-output').classList.remove('show');
+    document.getElementById('cm-loading').classList.add('show');
+    try {
+      const res = await fetch('https://api.anthropic.com/v1/messages', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ model:'claude-sonnet-4-20250514', max_tokens:1000, messages:[{role:'user',content:cmBuildPrompt()}] }) });
+      const d = await res.json();
+      const raw = d.content.map(b => b.text||'').join('');
+      let parsed;
+      try { parsed = JSON.parse(raw.replace(/```json|```/g,'').trim()); } catch(e) { cmShowError('Could not parse response. Try again.'); return; }
+      cmRenderOutput(parsed, platforms);
+    } catch(e) { cmShowError('Something went wrong. Check your connection.'); }
+    finally { document.getElementById('cm-loading').classList.remove('show'); document.getElementById('cm-gen-btn').disabled = false; }
+  }
+
+  function cmRenderOutput(parsed, platforms) {
+    const tabsEl = document.getElementById('cm-out-tabs');
+    const panelsEl = document.getElementById('cm-out-panels');
+    tabsEl.innerHTML = ''; panelsEl.innerHTML = '';
+    platforms.forEach((p, i) => {
+      const label = CM_LABELS[p] || p;
+      const content = parsed[p] || '(nothing generated)';
+      const tab = document.createElement('button');
+      tab.className = 'cm-out-tab' + (i===0?' active':'');
+      tab.textContent = label;
+      tab.onclick = () => { document.querySelectorAll('.cm-out-tab').forEach(t=>t.classList.remove('active')); document.querySelectorAll('.cm-out-panel').forEach(t=>t.classList.remove('active')); tab.classList.add('active'); document.getElementById('cmp-'+p).classList.add('active'); };
+      tabsEl.appendChild(tab);
+      const panel = document.createElement('div');
+      panel.className = 'cm-out-panel' + (i===0?' active':'');
+      panel.id = 'cmp-' + p;
+      if (p === 'email') {
+        const lines = content.split('\n');
+        const subj = lines.find(l => l.toLowerCase().startsWith('subject:'));
+        const body = lines.filter(l => !l.toLowerCase().startsWith('subject:')).join('\n').trim();
+        panel.innerHTML = subj ? `<div class="cm-card"><div class="cm-card-lbl">Subject line</div><div class="cm-card-text">${cmEsc(subj.replace(/^subject:\s*/i,''))}</div><button class="cm-copy" onclick="cmCopy(this,${JSON.stringify(subj.replace(/^subject:\s*/i,''))})">Copy</button></div><div class="cm-card"><div class="cm-card-lbl">Email body</div><div class="cm-card-text">${cmEsc(body)}</div><button class="cm-copy" onclick="cmCopy(this,${JSON.stringify(body)})">Copy</button></div>` : cmMakeCard(label, content);
+      } else { panel.innerHTML = cmMakeCard(label, content); }
+      panelsEl.appendChild(panel);
+    });
+    document.getElementById('cm-output').classList.add('show');
+  }
+
+  function cmMakeCard(label, content) { return `<div class="cm-card"><div class="cm-card-lbl">${label}</div><div class="cm-card-text">${cmEsc(content)}</div><button class="cm-copy" onclick="cmCopy(this,${JSON.stringify(content)})">Copy</button></div>`; }
+  function cmEsc(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function cmCopy(btn, text) { navigator.clipboard.writeText(text).then(() => { const o=btn.textContent; btn.textContent='Copied'; setTimeout(()=>btn.textContent=o,1500); }); }
+  function cmShowError(msg) { const el=document.getElementById('cm-error'); el.textContent=msg; el.classList.add('show'); document.getElementById('cm-loading').classList.remove('show'); document.getElementById('cm-gen-btn').disabled=false; }
 </script>
 
 </body>
