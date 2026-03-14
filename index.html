@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FEE. — Future Electric Eclectic</title>
+  <meta name="description" content="Curating the future of the dancefloor. Eclectic sound. Intentional spaces.">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Helvetica Neue', Arial, sans-serif; background: #0e0c0b; color: #f0ece4; min-height: 100vh; }
+    .grain { position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: 0.32; mix-blend-mode: overlay; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.1'/%3E%3C/svg%3E"); }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.4rem 2.5rem; position: sticky; top: 0; z-index: 50; background: rgba(14,12,11,0.96); border-bottom: 0.5px solid rgba(200,130,74,0.15); }
+    .nav-logo { font-family: Georgia, serif; font-size: 1rem; font-style: italic; color: #f0ece4; letter-spacing: 0.05em; }
+    .nav-logo .dot { color: #c8824a; }
+    .navlinks { display: flex; gap: 2rem; list-style: none; }
+    .navlinks button { background: none; border: none; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; color: #9a8878; transition: color 0.2s; padding: 0; }
+    .navlinks button:hover { color: #c8824a; }
+    .hero { min-height: 92vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 4rem 2.5rem 3rem; position: relative; overflow: hidden; background: linear-gradient(160deg, #b84a1a 0%, #7a3010 35%, #1a1208 70%, #0e0c0b 100%); }
+    .hero-bg-text { position: absolute; bottom: -0.08em; left: -0.02em; font-family: Georgia, serif; font-size: clamp(8rem, 22vw, 18rem); font-weight: bold; font-style: italic; color: rgba(0,0,0,0.22); line-height: 1; pointer-events: none; user-select: none; white-space: nowrap; }
+    .hero-content { position: relative; z-index: 2; }
+    .hero-pretag { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(200,130,74,0.9); margin-bottom: 1rem; }
+    .hero h1 { font-family: Georgia, serif; font-size: clamp(3.5rem, 10vw, 7rem); font-weight: bold; font-style: italic; line-height: 0.92; letter-spacing: -0.02em; color: #f0ece4; margin-bottom: 1.8rem; }
+    .hero h1 .dot { color: #c8824a; }
+    .hero-sub { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.82rem; color: rgba(240,236,228,0.58); letter-spacing: 0.04em; line-height: 1.9; margin-bottom: 2.5rem; max-width: 360px; }
+    .hero-sub strong { color: rgba(200,130,74,0.9); font-weight: 400; }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary { background: #c8824a; color: #0e0c0b; border: none; padding: 0.75rem 1.8rem; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; font-weight: 500; text-decoration: none; display: inline-block; }
+    .btn-primary:hover { background: #f0ece4; }
+    .btn-outline { background: transparent; color: #f0ece4; border: 0.5px solid rgba(240,236,228,0.35); padding: 0.75rem 1.8rem; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
+    .btn-outline:hover { border-color: #c8824a; color: #c8824a; }
+    .divider { height: 0.5px; background: linear-gradient(to right, transparent, rgba(200,130,74,0.25), transparent); margin: 0 2.5rem; }
+    .section { padding: 4rem 2.5rem; max-width: 1000px; margin: 0 auto; }
+    .sec-eyebrow { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: #c8824a; margin-bottom: 0.8rem; }
+    .sec-title { font-family: 'Courier New', Courier, monospace; font-size: clamp(1.4rem, 3vw, 2.2rem); color: #f0ece4; margin-bottom: 2.5rem; line-height: 1.15; }
+    .platform-row { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .plink { display: flex; align-items: center; gap: 0.5rem; padding: 0.65rem 1.2rem; border: 0.5px solid rgba(240,236,228,0.15); color: #9a8878; font-family: 'Courier New', Courier, monospace; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; transition: all 0.2s; cursor: pointer; background: none; text-decoration: none; }
+    .plink:hover { border-color: #c8824a; color: #c8824a; }
+    .plink svg { width: 13px; height: 13px; fill: currentColor; flex-shrink: 0; }
+    .sets-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; }
+    .set-card { background: #151210; border: 0.5px solid rgba(200,130,74,0.12); overflow: hidden; }
+    .set-card iframe { width: 100%; aspect-ratio: 16/9; display: block; border: none; background: #000; }
+    .set-info { padding: 1rem 1.2rem; border-top: 0.5px solid rgba(200,130,74,0.1); }
+    .set-num { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.6rem; letter-spacing: 0.2em; color: #c8824a; margin-bottom: 0.3rem; text-transform: uppercase; }
+    .set-name { font-family: 'Courier New', Courier, monospace; font-size: 1.1rem; color: #f0ece4; }
+    .set-sub { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.7rem; color: #6a5e54; letter-spacing: 0.05em; margin-top: 0.3rem; }
+    .channel-card { background: #151210; border: 0.5px solid rgba(200,130,74,0.12); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2rem 1.5rem; cursor: pointer; transition: border-color 0.2s; text-decoration: none; }
+    .channel-card:hover { border-color: rgba(200,130,74,0.4); }
+    .channel-icon { width: 44px; height: 44px; background: rgba(200,130,74,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
+    .channel-icon svg { width: 18px; height: 18px; fill: #c8824a; }
+    .channel-card p { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: #c8824a; }
+    .channel-card span { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; color: #6a5e54; margin-top: 0.4rem; display: block; letter-spacing: 0.06em; }
+    .fan-band { background: linear-gradient(135deg, #1c1208 0%, #2a1a0a 50%, #151210 100%); border-top: 0.5px solid rgba(200,130,74,0.15); border-bottom: 0.5px solid rgba(200,130,74,0.15); padding: 4rem 2.5rem; margin: 2rem 0; }
+    .fan-inner { max-width: 680px; margin: 0 auto; }
+    .fan-band h2 { font-family: 'Courier New', Courier, monospace; font-size: clamp(1.4rem, 3vw, 2.2rem); margin-bottom: 0.6rem; line-height: 1.15; color: #f0ece4; }
+    .fan-band p { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.82rem; color: #7a6e64; letter-spacing: 0.03em; margin-bottom: 2rem; line-height: 1.8; }
+    .fan-row { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+    .finput { flex: 1; min-width: 180px; background: rgba(255,255,255,0.03); border: 0.5px solid rgba(240,236,228,0.12); color: #f0ece4; padding: 0.75rem 1rem; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem; outline: none; transition: border-color 0.2s; }
+    .finput:focus { border-color: #c8824a; }
+    .finput::placeholder { color: #4a3e34; }
+    .fan-success { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.78rem; color: #c8824a; letter-spacing: 0.06em; margin-top: 0.8rem; display: none; }
+    .bform { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; max-width: 680px; }
+    .binput, .bselect, .btextarea { background: rgba(255,255,255,0.03); border: 0.5px solid rgba(240,236,228,0.1); color: #f0ece4; padding: 0.75rem 1rem; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem; outline: none; transition: border-color 0.2s; resize: none; }
+    .binput:focus, .bselect:focus, .btextarea:focus { border-color: #c8824a; }
+    .binput::placeholder, .btextarea::placeholder { color: #4a3e34; }
+    .bselect option { background: #1a1208; }
+    .full { grid-column: 1 / -1; }
+    .btextarea { height: 100px; }
+    footer { border-top: 0.5px solid rgba(200,130,74,0.12); padding: 2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    footer p { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.7rem; color: #4a3e34; letter-spacing: 0.06em; }
+    .admin-btn { background: none; border: none; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: #4a3e34; cursor: pointer; transition: color 0.2s; }
+    .admin-btn:hover { color: #c8824a; }
+    .login-screen { display: none; background: #0e0c0b; min-height: 100vh; align-items: center; justify-content: center; }
+    .login-screen.show { display: flex; }
+    .login-box { background: #151210; border: 0.5px solid rgba(200,130,74,0.2); padding: 3rem 2.5rem; width: 360px; }
+    .login-box h2 { font-family: Georgia, serif; font-size: 1.3rem; font-style: italic; margin-bottom: 0.4rem; }
+    .login-box p { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.78rem; color: #7a6e64; margin-bottom: 2rem; letter-spacing: 0.03em; line-height: 1.7; }
+    .login-box input { width: 100%; background: rgba(255,255,255,0.04); border: 0.5px solid rgba(240,236,228,0.12); color: #f0ece4; padding: 0.75rem 1rem; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.88rem; outline: none; margin-bottom: 0.8rem; transition: border-color 0.2s; }
+    .login-box input:focus { border-color: #c8824a; }
+    .login-err { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; color: #c87272; margin-bottom: 0.8rem; display: none; }
+    .back-link { background: none; border: none; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: #6a5e54; cursor: pointer; margin-top: 1rem; transition: color 0.2s; }
+    .back-link:hover { color: #c8824a; }
+    .dash { display: none; background: #0c0a09; min-height: 100vh; padding: 2.5rem; }
+    .dash.show { display: block; }
+    .dash-hdr { display: flex; justify-content: space-between; align-items: center; border-bottom: 0.5px solid rgba(200,130,74,0.15); padding-bottom: 1.2rem; margin-bottom: 2rem; }
+    .dash-hdr h1 { font-family: Georgia, serif; font-size: 1.1rem; font-style: italic; color: #f0ece4; }
+    .dash-hdr h1 .dot { color: #c8824a; }
+    .dash-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.2rem; }
+    .dcard { background: #151210; border: 0.5px solid rgba(200,130,74,0.1); padding: 1.5rem; }
+    .dcard h3 { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: #c8824a; margin-bottom: 1.2rem; }
+    .dentry { border-bottom: 0.5px solid rgba(255,255,255,0.04); padding: 0.65rem 0; }
+    .dentry:last-child { border-bottom: none; }
+    .dentry strong { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.82rem; color: #f0ece4; font-weight: 500; display: block; margin-bottom: 0.15rem; }
+    .dentry span { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.74rem; color: #6a5e54; }
+    .empty { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.78rem; color: #4a3e34; line-height: 1.7; }
+    .stat-big { font-family: Georgia, serif; font-size: 3rem; font-style: italic; color: #c8824a; line-height: 1; }
+    .stat-lbl { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: #6a5e54; margin-top: 0.4rem; }
+    @media (max-width: 640px) { nav { padding: 1.2rem 1.5rem; } .navlinks { gap: 1.2rem; } .hero { padding: 3rem 1.5rem 2.5rem; } .section { padding: 3rem 1.5rem; } .fan-band { padding: 3rem 1.5rem; } .sets-grid { grid-template-columns: 1fr; } .bform { grid-template-columns: 1fr; } footer { padding: 1.5rem; } .dash { padding: 1.5rem; } }
+  </style>
+</head>
+<body>
+
+<div class="grain"></div>
+
+<div id="mainPage">
+  <nav>
+    <div class="nav-logo"><em>FEE<span class="dot">.</span></em></div>
+    <ul class="navlinks">
+      <li><button onclick="document.getElementById('sets').scrollIntoView({behavior:'smooth'})">Sets</button></li>
+      <li><button onclick="document.getElementById('connect').scrollIntoView({behavior:'smooth'})">Connect</button></li>
+      <li><button onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Book Us</button></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-bg-text">FEE.</div>
+    <div class="hero-content">
+      <p class="hero-pretag">Music Curation</p>
+      <h1>FEE<span class="dot">.</span></h1>
+      <div class="hero-sub">
+        Curating the future of the dancefloor.<br>
+        <strong>Eclectic sound. Intentional spaces.</strong>
+      </div>
+      <div class="hero-ctas">
+        <a href="https://youtube.com/@fee_dsp" target="_blank" class="btn-primary">Watch Our Sets</a>
+        <a href="https://www.instagram.com/fee.dsp" target="_blank" class="btn-outline">Follow on IG</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section" id="sets">
+    <p class="sec-eyebrow">Latest Sets</p>
+    <h2 class="sec-title">Watch &amp; Listen</h2>
+    <div class="platform-row">
+      <a href="https://youtube.com/@fee_dsp" target="_blank" class="plink">
+        <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
+        YouTube
+      </a>
+      <a href="https://www.instagram.com/fee.dsp" target="_blank" class="plink">
+        <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8 0 3.2 0 3.6-.1 4.8-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.9.1-3.2 0-3.6 0-4.8-.1-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12c0-3.2 0-3.6.1-4.8C2.4 3.9 4 2.3 7.2 2.2c1.3-.1 1.6-.1 4.8-.1zm0-2.2C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12c0 3.3 0 3.7.1 4.9.2 4.4 2.6 6.8 7 7C8.3 24 8.7 24 12 24c3.3 0 3.7 0 4.9-.1 4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9 0-3.3 0-3.7-.1-4.9C23.7 2.7 21.3.3 16.9.1 15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4A6.2 6.2 0 0 0 12 5.8zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8z"/></svg>
+        Instagram
+      </a>
+    </div>
+    <div class="sets-grid">
+      <div class="set-card">
+        <iframe src="https://www.youtube.com/embed/nMJJ9mtSeNc?si=xqJzHVbCA8AECJB2&autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="set-info">
+          <div class="set-num">Set 001</div>
+          <div class="set-name">Crowd Control</div>
+          <div class="set-sub">Future Electric Eclectic &middot; Latest Set</div>
+        </div>
+      </div>
+      <a href="https://youtube.com/@fee_dsp" target="_blank" class="channel-card">
+        <div class="channel-icon">
+          <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
+        </div>
+        <p>Full Channel</p>
+        <span>@fee_dsp</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="fan-band" id="connect">
+    <div class="fan-inner">
+      <p class="sec-eyebrow">Stay Connected</p>
+      <h2>Join the Frequency</h2>
+      <p>Early access to new sets, event announcements, and exclusive drops — straight to your inbox.</p>
+      <form class="fan-row" onsubmit="submitFan(event)">
+        <input class="finput" type="text" id="fan-name" placeholder="Your name" required>
+        <input class="finput" type="email" id="fan-email" placeholder="Email address" required>
+        <button type="submit" class="btn-primary">Subscribe</button>
+      </form>
+      <p class="fan-success" id="fan-msg">You're in. Welcome to the frequency.</p>
+    </div>
+  </div>
+
+  <div class="section" id="booking">
+    <p class="sec-eyebrow">Bookings &amp; Inquiries</p>
+    <h2 class="sec-title">Book FEE.</h2>
+    <form class="bform" onsubmit="submitBooking(event)">
+      <input class="binput" type="text" id="b-name" placeholder="Your name" required>
+      <input class="binput" type="email" id="b-email" placeholder="Email address" required>
+      <input class="binput full" type="text" id="b-venue" placeholder="Venue / Location">
+      <input class="binput" type="text" id="b-date" placeholder="Event date (approx.)">
+      <input class="binput" type="text" id="b-capacity" placeholder="Expected capacity">
+      <select class="bselect full" id="b-type">
+        <option value="" disabled selected>Type of event</option>
+        <option>Club Night</option>
+        <option>Private Event</option>
+        <option>Festival</option>
+        <option>Open Air</option>
+        <option>Corporate</option>
+        <option>Other</option>
+      </select>
+      <textarea class="btextarea full" id="b-msg" placeholder="Tell us more about the event..."></textarea>
+      <div class="full"><button type="submit" class="btn-primary">Send Inquiry</button></div>
+    </form>
+    <p class="fan-success" id="booking-msg" style="margin-top:1rem;">Inquiry received. We'll be in touch soon.</p>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Future Electric Eclectic</p>
+    <button class="admin-btn" onclick="showLogin()">&#x2B21; Admin</button>
+  </footer>
+</div>
+
+<div id="loginScreen" class="login-screen">
+  <div class="login-box">
+    <h2>Admin Access</h2>
+    <p>Private area. Enter password to continue.</p>
+    <div class="login-err" id="login-err">Incorrect password.</div>
+    <input type="password" id="dash-pass" placeholder="Password" onkeydown="if(event.key==='Enter')checkPass()">
+    <button class="btn-primary" style="width:100%" onclick="checkPass()">Enter</button>
+    <br>
+    <button class="back-link" onclick="hideLogin()">&#8592; Back to site</button>
+  </div>
+</div>
+
+<div id="dashPage" class="dash">
+  <div class="dash-hdr">
+    <h1><em>FEE<span class="dot">.</span></em> Dashboard &mdash; Admin</h1>
+    <button class="btn-outline" onclick="exitDash()">Exit</button>
+  </div>
+  <div class="dash-grid">
+    <div class="dcard"><h3>Fan Signups</h3><div id="fan-list"><p class="empty">No signups yet this session.</p></div></div>
+    <div class="dcard"><h3>Booking Inquiries</h3><div id="booking-list"><p class="empty">No inquiries yet this session.</p></div></div>
+    <div class="dcard">
+      <h3>Session Stats</h3>
+      <div class="stat-big" id="s-fans">0</div>
+      <div class="stat-lbl">Fan signups</div>
+      <br>
+      <div class="stat-big" id="s-bookings">0</div>
+      <div class="stat-lbl">Booking inquiries</div>
+    </div>
+    <div class="dcard">
+      <h3>Channels</h3>
+      <div class="dentry"><strong>YouTube</strong><span>@fee_dsp</span></div>
+      <div class="dentry"><strong>Instagram</strong><span>@fee.dsp</span></div>
+      <div class="dentry"><strong>Contact</strong><span>futureelectriceclectic@gmail.com</span></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const PASS = 'fee_mon_colme1240&$!';
+  const data = { fans: [], bookings: [] };
+  function showLogin() { document.getElementById('mainPage').style.display='none'; document.getElementById('loginScreen').classList.add('show'); setTimeout(()=>document.getElementById('dash-pass').focus(),80); }
+  function hideLogin() { document.getElementById('loginScreen').classList.remove('show'); document.getElementById('mainPage').style.display='block'; document.getElementById('dash-pass').value=''; document.getElementById('login-err').style.display='none'; }
+  function checkPass() { if(document.getElementById('dash-pass').value===PASS){ document.getElementById('loginScreen').classList.remove('show'); document.getElementById('dashPage').classList.add('show'); renderDash(); }else{ document.getElementById('login-err').style.display='block'; } }
+  function exitDash() { document.getElementById('dashPage').classList.remove('show'); document.getElementById('mainPage').style.display='block'; document.getElementById('dash-pass').value=''; }
+  function submitFan(e) { e.preventDefault(); data.fans.push({name:document.getElementById('fan-name').value,email:document.getElementById('fan-email').value,ts:new Date().toLocaleTimeString()}); document.getElementById('fan-msg').style.display='block'; document.getElementById('fan-name').value=''; document.getElementById('fan-email').value=''; }
+  function submitBooking(e) { e.preventDefault(); data.bookings.push({name:document.getElementById('b-name').value,email:document.getElementById('b-email').value,venue:document.getElementById('b-venue').value,date:document.getElementById('b-date').value,type:document.getElementById('b-type').value,ts:new Date().toLocaleTimeString()}); document.getElementById('booking-msg').style.display='block'; ['b-name','b-email','b-venue','b-date','b-capacity','b-msg'].forEach(id=>document.getElementById(id).value=''); document.getElementById('b-type').selectedIndex=0; }
+  function renderDash() { document.getElementById('fan-list').innerHTML=data.fans.length?data.fans.map(f=>`<div class="dentry"><strong>${f.name}</strong><span>${f.email} &middot; ${f.ts}</span></div>`).join(''):'<p class="empty">No signups yet this session.</p>'; document.getElementById('booking-list').innerHTML=data.bookings.length?data.bookings.map(b=>`<div class="dentry"><strong>${b.name} &mdash; ${b.venue||'Venue TBD'}</strong><span>${b.email} &middot; ${b.date||'Date TBD'} &middot; ${b.type||'&mdash;'}</span></div>`).join(''):'<p class="empty">No inquiries yet this session.</p>'; document.getElementById('s-fans').textContent=data.fans.length; document.getElementById('s-bookings').textContent=data.bookings.length; }
+</script>
+
+</body>
+</html>
